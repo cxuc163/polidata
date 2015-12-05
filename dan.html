@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+
+    function vidplay() {
+       var video = document.getElementById("Video1");
+       var button = document.getElementById("play");
+       if (video.paused) {
+          video.play();
+          button.textContent = "pause";
+       } else {
+          video.pause();
+          button.textContent = "play";
+       }
+    }
+
+    function vidplay2() {
+       var video = document.getElementById("Video2");
+       var button = document.getElementById("play2");
+       if (video.paused) {
+          video.play();
+       } else {
+          video.pause();
+       }
+    }
+
+    function small() {
+       var video = document.getElementById("Video2");
+       video.style.display="none";
+    }
+
+    function big() {
+       var video = document.getElementById("Video2");
+       video.style.display="inline";
+       video.currentTime = 0;
+       video.play();
+    }
+
+
+    function restart() {
+        var video = document.getElementById("Video1");
+        video.currentTime = 0;
+    }
+
+    function skip(value) {
+        var video = document.getElementById("Video1");
+        video.currentTime += value;
+    }
+
+    var evt = document.createEvent("Event");
+    evt.initEvent("videoend", true, true);
+
+</script>  
+
+
+<body>
+<div>
+<video id="Video1" width="800" height="600">
+     <source src="000.mov" />
+</video>
+
+<video id="Video2" width="192" height="144" muted="true">
+     <source src="01.mov" />
+</video>
+
+</div>
+
+<div>
+<p>
+</p>
+<p>
+</p>
+</div>
+<div id="buttonbar">
+    <button id="restart" onclick="restart();">restart</button> 
+    <button id="rew" onclick="skip(-10)">rew</button>
+    <button id="play" onclick="vidplay()">play</button>
+    <button id="fastFwd" onclick="skip(10)">fastFwd</button>
+    <button id="play2" onclick="vidplay2()">Danmu</button> 
+    <button id="small" onclick="small()">small</button>
+    <button id="big" onclick="big()">big</button>  
+</div>   
+
+</body>
+</html>
